@@ -6,21 +6,58 @@
     <title>Leetcode Timer</title>
     <style>
       body {
-        width: 400px;
+        font-family: "Brush Script MT", cursive;
+        width: 750px;
         height: 600px;
       }
       .container {
         background-color: white;
-        width: 80vw;
-        height: 80vh;
+      }
+      .title {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .chart_types button {
+        padding: 5px;
+        padding-right: 20px;
+        padding-left: 20px;
+        margin-right: 10px;
+        border-radius: 30px;
+      }
+      .chart_types select {
+        padding: 5px;
+        padding-right: 20px;
+        background-color: #f0f0f0;
+        border-color: #000;
+        border-width: 2px;
+        border-radius: 30px;
+      }
+      #canvas {
+        margin-top: 30px;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Leetcode Timer</h1>
+      <h1 class="title">Leetcode Progress Tracker</h1>
+      <div id="debugArea"></div>
+      <div class="chart_types">
+        <button id="defaultGraph">All</button>
+        <button id="easyGraph">Easy</button>
+        <button id="mediumGraph">Medium</button>
+        <button id="hardGraph">Hard</button>
+        <select name="duration" id="duration">
+          <option value="D_no">All time</option>
+          <option value="D_last7days">Last 7 days</option>
+          <option value="D_last30days">Last 30 days</option>
+          <option value="D_last90days">Last 90 days</option>
+        </select>
+      </div>
+      <div id="graph">
+        <canvas id="canvas"></canvas>
+      </div>
     </div>
-
-    <script></script>
+    <script src="lib/chart.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

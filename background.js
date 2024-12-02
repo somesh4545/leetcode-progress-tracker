@@ -141,7 +141,7 @@ const storeQuestionSolvedDetails = async (question_details, timeTken) => {
       title: question_details.title,
       difficulty: question_details.difficulty,
       timeTaken: timeTken,
-      date: new Date(),
+      date: JSON.stringify(new Date()),
     };
     const data = await fetchQuestionsSolvedArr(key);
     const updatedArray = data ? [...data, obj] : [obj];
@@ -151,5 +151,220 @@ const storeQuestionSolvedDetails = async (question_details, timeTken) => {
     console.log(error);
   }
 };
+
+// const questionData = [
+//   {
+//     questionId: "1",
+//     title: "Two Sum",
+//     difficulty: "Easy",
+//     timeTaken: 12, // in minutes
+//     date: JSON.stringify(new Date(2024, 10, 1)), // Nov 1, 2024
+//   },
+//   {
+//     questionId: "2",
+//     title: "Add Two Numbers",
+//     difficulty: "Medium",
+//     timeTaken: 45,
+//     date: JSON.stringify(new Date(2024, 10, 5)), // Nov 5, 2024
+//   },
+//   {
+//     questionId: "3",
+//     title: "Longest Substring Without Repeating Characters",
+//     difficulty: "Medium",
+//     timeTaken: 50,
+//     date: JSON.stringify(new Date(2024, 10, 10)), // Nov 10, 2024
+//   },
+//   {
+//     questionId: "4",
+//     title: "Median of Two Sorted Arrays",
+//     difficulty: "Hard",
+//     timeTaken: 120,
+//     date: JSON.stringify(new Date(2024, 10, 15)), // Nov 15, 2024
+//   },
+//   {
+//     questionId: "5",
+//     title: "Container With Most Water",
+//     difficulty: "Medium",
+//     timeTaken: 35,
+//     date: JSON.stringify(new Date(2024, 10, 20)), // Nov 20, 2024
+//   },
+//   {
+//     questionId: "6",
+//     title: "Valid Parentheses",
+//     difficulty: "Easy",
+//     timeTaken: 15,
+//     date: JSON.stringify(new Date(2024, 10, 25)), // Nov 25, 2024
+//   },
+//   {
+//     questionId: "7",
+//     title: "Reverse Integer",
+//     difficulty: "Easy",
+//     timeTaken: 18,
+//     date: JSON.stringify(new Date(2024, 10, 27)), // Nov 27, 2024
+//   },
+//   {
+//     questionId: "8",
+//     title: "Regular Expression Matching",
+//     difficulty: "Hard",
+//     timeTaken: 150,
+//     date: JSON.stringify(new Date(2024, 10, 28)), // Nov 28, 2024
+//   },
+//   {
+//     questionId: "9",
+//     title: "Palindrome Number",
+//     difficulty: "Easy",
+//     timeTaken: 10,
+//     date: JSON.stringify(new Date(2024, 11, 1)), // Dec 1, 2024
+//   },
+//   {
+//     questionId: "10",
+//     title: "3Sum",
+//     difficulty: "Medium",
+//     timeTaken: 70,
+//     date: JSON.stringify(new Date(2024, 11, 2)), // Dec 2, 2024
+//   },
+//   {
+//     questionId: "11",
+//     title: "Binary Search",
+//     difficulty: "Easy",
+//     timeTaken: 20,
+//     date: JSON.stringify(new Date(2024, 10, 2)), // Nov 2, 2024
+//   },
+//   {
+//     questionId: "12",
+//     title: "Climbing Stairs",
+//     difficulty: "Easy",
+//     timeTaken: 12,
+//     date: JSON.stringify(new Date(2024, 10, 3)), // Nov 3, 2024
+//   },
+//   {
+//     questionId: "13",
+//     title: "Merge Two Sorted Lists",
+//     difficulty: "Easy",
+//     timeTaken: 25,
+//     date: JSON.stringify(new Date(2024, 10, 6)), // Nov 6, 2024
+//   },
+//   {
+//     questionId: "14",
+//     title: "Search in Rotated Sorted Array",
+//     difficulty: "Medium",
+//     timeTaken: 40,
+//     date: JSON.stringify(new Date(2024, 10, 8)), // Nov 8, 2024
+//   },
+//   {
+//     questionId: "15",
+//     title: "Combination Sum",
+//     difficulty: "Medium",
+//     timeTaken: 55,
+//     date: JSON.stringify(new Date(2024, 10, 12)), // Nov 12, 2024
+//   },
+//   {
+//     questionId: "16",
+//     title: "Maximum Subarray",
+//     difficulty: "Easy",
+//     timeTaken: 30,
+//     date: JSON.stringify(new Date(2024, 10, 16)), // Nov 16, 2024
+//   },
+//   {
+//     questionId: "17",
+//     title: "Sudoku Solver",
+//     difficulty: "Hard",
+//     timeTaken: 180,
+//     date: JSON.stringify(new Date(2024, 10, 18)), // Nov 18, 2024
+//   },
+//   {
+//     questionId: "18",
+//     title: "Word Search",
+//     difficulty: "Medium",
+//     timeTaken: 60,
+//     date: JSON.stringify(new Date(2024, 10, 22)), // Nov 22, 2024
+//   },
+//   {
+//     questionId: "19",
+//     title: "Unique Paths",
+//     difficulty: "Medium",
+//     timeTaken: 50,
+//     date: JSON.stringify(new Date(2024, 10, 23)), // Nov 23, 2024
+//   },
+//   {
+//     questionId: "20",
+//     title: "LRU Cache",
+//     difficulty: "Hard",
+//     timeTaken: 120,
+//     date: JSON.stringify(new Date(2024, 10, 29)), // Nov 29, 2024
+//   },
+//   {
+//     questionId: "21",
+//     title: "Minimum Path Sum",
+//     difficulty: "Medium",
+//     timeTaken: 35,
+//     date: JSON.stringify(new Date(2024, 10, 30)), // Nov 30, 2024
+//   },
+//   {
+//     questionId: "22",
+//     title: "Longest Palindromic Substring",
+//     difficulty: "Medium",
+//     timeTaken: 75,
+//     date: JSON.stringify(new Date(2024, 11, 3)), // Dec 3, 2024
+//   },
+//   {
+//     questionId: "23",
+//     title: "Trapping Rain Water",
+//     difficulty: "Hard",
+//     timeTaken: 140,
+//     date: JSON.stringify(new Date(2024, 11, 4)), // Dec 4, 2024
+//   },
+//   {
+//     questionId: "24",
+//     title: "Generate Parentheses",
+//     difficulty: "Medium",
+//     timeTaken: 60,
+//     date: JSON.stringify(new Date(2024, 11, 6)), // Dec 6, 2024
+//   },
+//   {
+//     questionId: "25",
+//     title: "Spiral Matrix",
+//     difficulty: "Medium",
+//     timeTaken: 45,
+//     date: JSON.stringify(new Date(2024, 11, 7)), // Dec 7, 2024
+//   },
+//   {
+//     questionId: "26",
+//     title: "Merge Intervals",
+//     difficulty: "Medium",
+//     timeTaken: 50,
+//     date: JSON.stringify(new Date(2024, 11, 9)), // Dec 9, 2024
+//   },
+//   {
+//     questionId: "27",
+//     title: "Largest Rectangle in Histogram",
+//     difficulty: "Hard",
+//     timeTaken: 125,
+//     date: JSON.stringify(new Date(2024, 11, 11)), // Dec 11, 2024
+//   },
+//   {
+//     questionId: "28",
+//     title: "Sliding Window Maximum",
+//     difficulty: "Hard",
+//     timeTaken: 90,
+//     date: JSON.stringify(new Date(2024, 11, 13)), // Dec 13, 2024
+//   },
+//   {
+//     questionId: "29",
+//     title: "Word Ladder",
+//     difficulty: "Hard",
+//     timeTaken: 150,
+//     date: JSON.stringify(new Date(2024, 11, 15)), // Dec 15, 2024
+//   },
+//   {
+//     questionId: "30",
+//     title: "Longest Consecutive Sequence",
+//     difficulty: "Medium",
+//     timeTaken: 60,
+//     date: JSON.stringify(new Date(2024, 11, 17)), // Dec 17, 2024
+//   },
+// ];
+
+// storeQuestionArr(key, questionData);
 
 console.log("Extension working!");
