@@ -2,11 +2,19 @@ const DEFAULT_GRAPH = document.getElementById("defaultGraph");
 const EASY_GRAPH = document.getElementById("easyGraph");
 const MEDIUM_GRAPH = document.getElementById("mediumGraph");
 const HARD_GRAPH = document.getElementById("hardGraph");
+const TIME_SPENT_GRAPH = document.getElementById("timeSpent");
 const DEFAULT_COLOR = "#3033f5";
 const EASY_COLOR = "#46c6c2";
 const MEDIUM_COLOR = "#fac31d";
 const HARD_COLOR = "#f8615c";
-const graph_types = [DEFAULT_GRAPH, EASY_GRAPH, MEDIUM_GRAPH, HARD_GRAPH];
+const TIME_SPENT = "#640D5F";
+const graph_types = [
+  DEFAULT_GRAPH,
+  EASY_GRAPH,
+  MEDIUM_GRAPH,
+  HARD_GRAPH,
+  TIME_SPENT_GRAPH,
+];
 
 let orgQuestionData = [];
 let questionData = [];
@@ -83,7 +91,7 @@ const createGraph = (labels, data, color = null) => {
             label: function (tooltipItem) {
               const seconds = tooltipItem.raw;
               let time_label = "";
-              if (seconds > 60) {
+              if (seconds >= 60) {
                 time_label += ` ${Math.floor(seconds / 60)} m`;
               }
               if (seconds % 60 != 0 && seconds != 0) {
@@ -120,6 +128,35 @@ const createGraphBasedOnDifficulty = (id) => {
   );
 };
 
+const createGraphBasedOnTimeSpend = () => {
+  const parseDataByDate = (data) => {
+    const groupedData = data.reduce((acc, obj) => {
+      const dateKey = obj.date.toISOString().split("T")[0];
+      if (!acc[dateKey]) {
+        acc[dateKey] = { timeTaken: 0, frequency: 0 };
+      }
+      acc[dateKey].timeTaken += obj.timeTaken;
+      acc[dateKey].frequency += 1;
+      return acc;
+    }, {});
+    return Object.entries(groupedData).map(
+      ([date, { timeTaken, frequency }]) => ({
+        date,
+        timeTaken,
+        frequency,
+      })
+    );
+  };
+
+  const result = parseDataByDate(questionData);
+  const labels = result.map(
+    (item) => item.date + " \nSolved - " + item.frequency
+  );
+  const data = result.map((item) => item.timeTaken);
+
+  createGraph(labels, data, TIME_SPENT);
+};
+
 const updateButtonClick = (id) => {
   for (const g of graph_types) g.style.borderColor = "#000";
   optionSelected = id;
@@ -135,6 +172,9 @@ const updateButtonClick = (id) => {
   } else if (id == 3) {
     HARD_GRAPH.style.borderColor = HARD_COLOR;
     createGraphBasedOnDifficulty(2);
+  } else if (id == 4) {
+    TIME_SPENT_GRAPH.style.borderColor = TIME_SPENT;
+    createGraphBasedOnTimeSpend();
   }
 };
 
@@ -149,6 +189,9 @@ MEDIUM_GRAPH.addEventListener("click", () => {
 });
 HARD_GRAPH.addEventListener("click", () => {
   updateButtonClick(3);
+});
+TIME_SPENT_GRAPH.addEventListener("click", () => {
+  updateButtonClick(4);
 });
 
 // for the select option
