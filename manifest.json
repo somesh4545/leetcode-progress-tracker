@@ -1,0 +1,23 @@
+{
+  "name": "leetcode timer",
+  "version": "1.0.0",
+  "description": "track time spend on each type of question",
+  "manifest_version": 3,
+  "author": "Somesh Somani",
+  "content_scripts": [
+    {
+      "matches": ["https://leetcode.com/problems/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Summary"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["webRequest", "activeTab", "tabs", "scripting", "storage"],
+  "host_permissions": ["https://leetcode.com/graphql"]
+}
