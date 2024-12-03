@@ -1,5 +1,5 @@
 {
-  "name": "leetcode timer",
+  "name": "Leetcode Progress Tracker",
   "version": "1.0.0",
   "description": "track time spend on each type of question",
   "manifest_version": 3,
