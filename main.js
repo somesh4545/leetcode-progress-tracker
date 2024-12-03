@@ -60,7 +60,7 @@ const createGraph = (labels, data, quesNo, color = null) => {
     options: {
       elements: {
         line: {
-          tension: 1,
+          tension: 0.4,
           borderWidth: 5,
           backgroundColor: !color ? DEFAULT_COLOR : color,
           borderColor: !color ? DEFAULT_COLOR : color,
@@ -247,7 +247,7 @@ const statsTable = document.getElementById("statsTable");
 
 const convertSecondsToLeetcodeFormat = (timeInSeconds) => {
   const minutes = Math.floor(timeInSeconds / 60);
-  const seconds = timeInSeconds % 60;
+  const seconds = Math.floor(timeInSeconds % 60);
   let label = "";
   if (minutes != 0) label = `${minutes} m `;
   if (seconds != 0) label += `${seconds} s`;
