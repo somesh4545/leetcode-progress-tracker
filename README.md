@@ -11,15 +11,13 @@ This Chrome extension helps track the time you spend solving LeetCode questions.
 - Provides visual statistics to help you analyze your solving speed and difficulty distribution.
 - Lightweight and easy to use.
 
-<details>
-  <summary>Interface</summary>
-  <h5>Graph of Time Spent on Easy Problems</h5>
-  <img style="height: 400px" src="https://github.com/user-attachments/assets/130223ea-1aad-40a6-ac47-f61cf7324973" alt="Graph on easy problems"/>
-  <h5>Get Overall Stats Summary</h5>
-  <img style="height: 400px" src="https://github.com/user-attachments/assets/1ee65942-4c4d-4318-aede-ac649bd62b3c" alt="Stats table"/>
-  <h5>Medium Problems Solved in the Last 7 Days</h5>
-  <img style="height: 400px" src="https://github.com/user-attachments/assets/ba4ffc61-490a-4254-8bd5-821537213b9e" alt="Graph on medium problems solved in last 7 days"/>
-</details>
+## Interface
+<h5>Graph of Time Spent on Easy Problems</h5>
+<img style="height: 400px" src="https://github.com/user-attachments/assets/d85b43ac-0cd0-41ca-87e5-0b62c4950add" alt="Graph on easy problems"/>
+<h5>Get Overall Stats Summary</h5>
+<img style="height: 400px" src="https://github.com/user-attachments/assets/626fa1aa-c092-47a6-9b79-6b56722453f7" alt="Stats table"/>
+<h5>Track Time Spent Daily</h5>
+<img style="height: 400px" src="https://github.com/user-attachments/assets/300ead02-3f5f-437e-b670-48648db404a2" alt="Graph to track time spent daily"/>
 
 ---
 
