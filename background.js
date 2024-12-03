@@ -10,20 +10,6 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
   }
 });
 
-let headers = null;
-
-chrome.webRequest.onSendHeaders.addListener(
-  async function (details) {
-    if (details.method === "POST" && details.requestBody) {
-      headers = details.requestHeaders;
-      console.log(headers);
-      return;
-    }
-  },
-  { urls: ["*://leetcode.com/graphql*"] },
-  ["requestHeaders"]
-);
-
 chrome.webRequest.onBeforeRequest.addListener(
   async function (details) {
     if (details.method === "POST" && details.requestBody) {
