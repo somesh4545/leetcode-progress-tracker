@@ -6,9 +6,20 @@ This Chrome extension helps track the time you spend solving LeetCode questions.
 
 ## **Features**
 - Tracks the time spent on each LeetCode question using the built-in timer on LeetCode.
+- Tracks daily time spent on leetcode. 
 - Logs the question's details.
 - Provides visual statistics to help you analyze your solving speed and difficulty distribution.
 - Lightweight and easy to use.
+
+<details>
+  <summary>Interface</summary>
+  <h5>Graph of Time Spent on Easy Problems</h5>
+  <img style="height: 400px" src="https://github.com/user-attachments/assets/130223ea-1aad-40a6-ac47-f61cf7324973" alt="Graph on easy problems"/>
+  <h5>Get Overall Stats Summary</h5>
+  <img style="height: 400px" src="https://github.com/user-attachments/assets/1ee65942-4c4d-4318-aede-ac649bd62b3c" alt="Stats table"/>
+  <h5>Medium Problems Solved in the Last 7 Days</h5>
+  <img style="height: 400px" src="https://github.com/user-attachments/assets/ba4ffc61-490a-4254-8bd5-821537213b9e" alt="Graph on medium problems solved in last 7 days"/>
+</details>
 
 ---
 
