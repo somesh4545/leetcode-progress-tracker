@@ -1,4 +1,4 @@
-# LeetCode Timer Extension
+# LeetCode Progress tracker
 
 This Chrome extension helps track the time you spend solving LeetCode questions. It allows you to analyze your performance, improve your efficiency, and view detailed statistics of your progress directly in your browser.
 
