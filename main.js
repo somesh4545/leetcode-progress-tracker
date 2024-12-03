@@ -29,6 +29,7 @@ const prepareQuestionData = () => {
       });
       orgQuestionData.sort((a, b) => a.date - b.date);
       questionData = orgQuestionData;
+      openDefaultGraph();
     }
   });
 };
@@ -39,7 +40,7 @@ const ctx = document.getElementById("canvas");
 
 let ctxInstance;
 
-const createGraph = (labels, data, color = null) => {
+const createGraph = (labels, data, quesNo, color = null) => {
   if (ctxInstance) {
     ctxInstance.destroy();
   }
@@ -49,7 +50,7 @@ const createGraph = (labels, data, color = null) => {
       labels: labels,
       datasets: [
         {
-          label: "",
+          label: "Total Questions Solved: " + quesNo,
           data: data,
           borderWidth: 1,
         },
@@ -84,6 +85,15 @@ const createGraph = (labels, data, color = null) => {
             },
           },
         },
+        y: {
+          title: {
+            display: true,
+            text: "Seconds",
+            font: {
+              size: 14,
+            },
+          },
+        },
       },
       plugins: {
         tooltip: {
@@ -111,7 +121,7 @@ const createDefaultGraph = () => {
     (ques) => ques.questionId + " - " + ques.title
   );
   const data = questionData.map((ques) => ques.timeTaken);
-  createGraph(labels, data, DEFAULT_COLOR);
+  createGraph(labels, data, data.length, DEFAULT_COLOR);
 };
 
 const createGraphBasedOnDifficulty = (id) => {
@@ -124,6 +134,7 @@ const createGraphBasedOnDifficulty = (id) => {
   createGraph(
     labels,
     data,
+    data.length,
     id == 0 ? EASY_COLOR : id == 1 ? MEDIUM_COLOR : HARD_COLOR
   );
 };
@@ -131,7 +142,12 @@ const createGraphBasedOnDifficulty = (id) => {
 const createGraphBasedOnTimeSpend = () => {
   const parseDataByDate = (data) => {
     const groupedData = data.reduce((acc, obj) => {
-      const dateKey = obj.date.toISOString().split("T")[0];
+      const date = obj.date;
+      const day = String(date.getDate()).padStart(2, "0");
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const year = date.getFullYear();
+      const dateKey = `${day}-${month}-${year}`;
+
       if (!acc[dateKey]) {
         acc[dateKey] = { timeTaken: 0, frequency: 0 };
       }
@@ -150,11 +166,11 @@ const createGraphBasedOnTimeSpend = () => {
 
   const result = parseDataByDate(questionData);
   const labels = result.map(
-    (item) => item.date + " \nSolved - " + item.frequency
+    (item) => item.date + " \nSolved: " + item.frequency
   );
   const data = result.map((item) => item.timeTaken);
-
-  createGraph(labels, data, TIME_SPENT);
+  const quesNo = result.reduce((sum, item) => sum + item.frequency, 0);
+  createGraph(labels, data, quesNo, TIME_SPENT);
 };
 
 const updateButtonClick = (id) => {
@@ -214,4 +230,8 @@ document.getElementsByTagName("select")[0].onchange = function () {
     questionData = orgQuestionData;
   }
   updateButtonClick(optionSelected);
+};
+
+const openDefaultGraph = () => {
+  updateButtonClick(0);
 };
