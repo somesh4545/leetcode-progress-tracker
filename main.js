@@ -321,3 +321,19 @@ const createStatsTable = (data) => {
   table.appendChild(tbody);
   statsTable.appendChild(table);
 };
+
+// share the extnesion function
+document.getElementById("shareBtn").addEventListener("click", () => {
+  const textToShare =
+    "I'm using this awesome Chrome extension to track how much time I spend solving LeetCode questions. It helps me analyze and improve my performance over time! 📈\n🔗 Get it here: https://github.com/somesh4545/leetcode-progress-tracker/\nHow it works:\n1️⃣ Tracks time spent on each question automatically.\n2️⃣ Provides stats and visualizations to help you improve.\n3️⃣ Simple to use—just solve problems and check your stats anytime!\n\nIt's been a game-changer for me—give it a try and share your progress! 🎯";
+
+  navigator.clipboard
+    .writeText(textToShare)
+    .then(() => {
+      alert("Text is copied to clipboard");
+    })
+    .catch((err) => {
+      console.error("Failed to copy text");
+      console.log(err);
+    });
+});

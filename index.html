@@ -8,15 +8,33 @@
       body {
         font-family: Verdana, sans-serif;
         width: 750px;
-        height: 700px;
+        height: 750px;
       }
       .container {
         background-color: white;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
       }
       .title {
         font-size: 24px;
         text-align: center;
         margin-bottom: 30px;
+        color: #ffa116;
+      }
+      .headerBtns {
+        margin-right: 20px;
+      }
+      .headerBtns a {
+        background-color: transparent;
+        border: none;
+        margin-left: 20px;
+        cursor: pointer;
+      }
+      .shareBtn {
       }
       .chart_types button {
         padding: 5px;
@@ -40,11 +58,66 @@
       td {
         font-size: 16px;
       }
+      .developerSection {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px;
+      }
+      .developerLink {
+        font-size: 14px;
+      }
+      ::-webkit-scrollbar {
+        width: 5px;
+        background-color: #f0f0f0;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #ffa116;
+        border-radius: 5px;
+        border-radius: 10px;
+      }
+
+      [data-tooltip]:hover::after {
+        display: block;
+        position: absolute;
+        content: attr(data-tooltip);
+        border: 1px solid rgb(31, 30, 30);
+        border-radius: 5px;
+        background: #fff;
+        padding: 0.25em;
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1 class="title">Leetcode Progress Tracker</h1>
+      <div class="header">
+        <h1 class="title">Leetcode Progress Tracker</h1>
+        <div class="headerBtns">
+          <a
+            href="https://github.com/somesh4545/leetcode-progress-tracker/issues"
+            target="_blank"
+            data-tooltip="Report a bug/feature"
+            class="reportBtn"
+          >
+            <img
+              src="assets/report-bug.svg"
+              alt="Report bug"
+              width="16"
+              height="16"
+            />
+          </a>
+          <a data-tooltip="Share this extension" class="shareBtn" id="shareBtn">
+            <img
+              src="assets/share-solid.svg"
+              alt="Report bug"
+              width="16"
+              height="16"
+            />
+          </a>
+        </div>
+      </div>
+
       <div id="debugArea"></div>
       <div class="chart_types">
         <button id="defaultGraph">All</button>
@@ -63,6 +136,14 @@
         <canvas id="canvas"></canvas>
       </div>
       <div id="statsTable"></div>
+      <div class="developerSection">
+        <a
+          class="developerLink"
+          href="https://www.linkedin.com/in/somesh-somani-29aa451b4/"
+          target="_blank"
+          >Connect with developer</a
+        >
+      </div>
     </div>
     <script src="lib/chart.js"></script>
     <script src="main.js"></script>
